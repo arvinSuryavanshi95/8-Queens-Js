@@ -1,0 +1,128 @@
+function alldisable() 
+    {
+    document.getElementById("firstInterface").style.display = "block";
+    document.getElementById("container").style.display = "none";
+    document.getElementById("starterpopup").style.display = "none";
+    document.getElementById("gameheading").style.display = "none";
+    document.getElementById("reloadbtn").style.display = "none";
+    }
+
+function firstpage() 
+    {
+    document.getElementById("firstInterface").style.display = "none";
+    }
+
+function closestarterpopup() 
+    {
+    document.getElementById("container").style.display = "block";
+    document.getElementById("starterpopup").style.display = "none";
+	document.getElementById("gameheading").style.display = "block";
+	document.getElementById("timeCount").style.display = "block";
+
+
+    }
+function showStarterpopup()
+	{
+    document.getElementById("starterpopup").style.display = "block";
+	document.getElementById("container").style.display = "none";
+	document.getElementById("").style.display = "none";
+	}
+
+	var timeLimit=300;
+	function timestart(){
+		setInterval(timeCountDown,1000);
+	}
+
+
+function show(id) {
+    var img = '<img id="image_' + id + '" width="50px" height="50px" src="images/queen1.png" >';
+    var x1 = document.getElementById(id);
+    var image = document.getElementById("image_" + id);
+    if (image)
+		 {
+           x1.innerHTML = " ";
+         } 
+	else {
+          x1.innerHTML = img;
+    var row = id.split("_")[0];
+    var col = id.split("_")[1];
+        disableRightDiv(row, col);
+        disableLeftDiv(row, col);
+        disableColDownDiv(row, col);
+        disableColUpDiv(row, col);
+		disableUpLeft(row, col);
+		disableUpRight(row, col);
+        disableLeftDawn(row,col);
+		disableRightDawn(row,col);
+     }
+    }
+
+function disableRightDiv(row, col) {
+    var colVal = parseInt(col);
+    for (var i = colVal + 1; i <= 8; i++) {
+        document.getElementById(row + "_" + i).style.pointerEvents = "none";
+       //document.getElementById(row + "_" + i).style.backgroundColor="pink"
+     }
+     }
+
+function disableLeftDiv(row, col) {
+     var colVal = parseInt(col);
+     for (var i = colVal - 1; i >= 1; i--) {
+        document.getElementById(row + "_" + i).style.pointerEvents = "none";
+	  //document.getElementById(row + "_" + i).style.backgroundColor="pink"
+	  }
+      }
+
+function disableColDownDiv(row, col) {
+    var rowVal = parseInt(row);
+    for (var j = rowVal + 1; j <= 8; j++) {
+        document.getElementById(j + "_" + col).style.pointerEvents = "none";
+		//document.getElementById(j + "_" + col).style.backgroundColor="pink"
+       }
+       }
+
+function disableColUpDiv(row, col) {
+    var rowVal = parseInt(row);
+    for (var j = rowVal - 1; j >= 1; j--) {
+        document.getElementById(j + "_" + col).style.pointerEvents = "none";
+	  //document.getElementById(j + "_" + col).style.backgroundColor="pink"\
+	   }
+       }
+
+function disableUpLeft(row, col) { //upLeft Diagonal
+    var rowVal = parseInt(row);
+    var colVal = parseInt(col); 
+    for (let i = rowVal-1, j = colVal - 1; i > 0 && j > 0; i--, j--) {
+        document.getElementById(i + "_" + j).style.pointerEvents = "none";
+      //document.getElementById(i + "_" + j).style.backgroundColor="pink"
+      }
+      }
+
+function disableUpRight(row, col) { //upRight Diagonal
+    var rowVal = parseInt(row);
+    var colVal = parseInt(col); 
+    for (let i = rowVal-1, j=colVal+1; i > 0 && j > 0; i--, j++) {
+        document.getElementById(i + "_" + j).style.pointerEvents = "none";
+	  //document.getElementById(i + "_" + j).style.backgroundColor = "pink";
+	  }
+      }
+
+function disableLeftDawn(row, col) { //downLeft Diagonal
+    var rowVal = parseInt(row);
+    var colVal = parseInt(col); 
+    for (let i = rowVal+1, j=colVal-1; i > 0 && j > 0; i++, j--) {
+         document.getElementById(i + "_" + j).style.pointerEvents = "none";
+       //document.getElementById(i + "_" + j).style.backgroundColor = "pink";
+      }
+      }
+
+function disableRightDawn(row, col) { //downLeft Diagonal
+    var rowVal = parseInt(row);
+    var colVal = parseInt(col); 
+    for (let i = rowVal+1, j=colVal+1; i > 0 && j > 0; i++, j++) {
+         document.getElementById(i + "_" + j).style.pointerEvents = "none";
+	   //document.getElementById(i + "_" + j).style.backgroundColor = "pink";
+       }
+      }
+
+
